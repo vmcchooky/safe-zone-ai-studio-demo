@@ -1,4 +1,4 @@
-import { Bell, LogOut, RadioTower, Settings2, Shield, Sparkles, MonitorSmartphone, ShieldAlert, Flag, HardDrive } from 'lucide-react';
+import { Bell, ExternalLink, LogOut, RadioTower, Settings2, Shield, Sparkles, MonitorSmartphone, ShieldAlert, Flag, HardDrive } from 'lucide-react';
 import { NavLink, useLocation } from 'react-router-dom';
 import logoImg from '../assets/logo.png';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -6,6 +6,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import { useAuth } from '../auth/AuthProvider';
 import type { AuthSession } from '../lib/types';
+import { ProductionAccessDialog } from './ProductionAccessDialog';
 
 const preloadTelemetry = () => import('../routes/telemetry/TelemetryPage');
 const DEFAULT_GUEST_NOTICE = 'Khách không được quyền thay đổi hoặc áp dụng các chính sách mới vào hệ thống, nếu muốn hãy liên hệ với quản trị viên của Safe Zone DNS tại contact@quorix.io.vn.';
@@ -35,6 +36,7 @@ export function AppShell({
   const dockRef = useRef<HTMLElement | null>(null);
   const [showNav, setShowNav] = useState(true);
   const [hasViewedGuestNotice, setHasViewedGuestNotice] = useState(false);
+  const [showProductionDialog, setShowProductionDialog] = useState(false);
   const guestMessage = session.read_only ? session.guest_message?.trim() : '';
   const noticeLines = guestMessage ? guestNoticeLines(guestMessage) : [];
 
@@ -136,6 +138,15 @@ export function AppShell({
         </div>
 
         <div className="shell-header-actions">
+          <button
+            aria-label="Mở Safe Zone Production"
+            className="shell-production-button"
+            type="button"
+            onClick={() => setShowProductionDialog(true)}
+          >
+            <ExternalLink size={15} aria-hidden="true" />
+            <span className="hidden sm:inline">Mở Production</span>
+          </button>
           <div className="shell-badge">
             <Sparkles size={14} />
             <span className="hidden sm:inline">Role </span><strong>{session.role}</strong>
@@ -210,6 +221,11 @@ export function AppShell({
           )}
         </AnimatePresence>
       </div>
+
+      <ProductionAccessDialog
+        open={showProductionDialog}
+        onClose={() => setShowProductionDialog(false)}
+      />
     </div>
   );
 }

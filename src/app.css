@@ -262,6 +262,357 @@
   border-radius: 14px;
 }
 
+.shell-production-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 0 13px;
+  border: 1px solid rgba(13, 148, 136, 0.22);
+  border-radius: 14px;
+  color: #0f766e;
+  background: linear-gradient(135deg, rgba(240, 253, 250, 0.92), rgba(224, 242, 254, 0.78));
+  box-shadow: 0 5px 16px rgba(14, 116, 144, 0.1), inset 0 1px rgba(255, 255, 255, 0.92);
+  font-size: 0.84rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.shell-production-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(13, 148, 136, 0.42);
+  background: linear-gradient(135deg, rgba(236, 253, 245, 0.98), rgba(224, 242, 254, 0.9));
+  box-shadow: 0 8px 20px rgba(14, 116, 144, 0.14), inset 0 1px rgba(255, 255, 255, 0.96);
+}
+
+.shell-production-button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.shell-production-button:focus-visible,
+.production-dialog-close:focus-visible,
+.production-dialog-copy:focus-visible,
+.production-dialog-cancel:focus-visible,
+.production-dialog-confirm:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.2), 0 8px 20px rgba(14, 116, 144, 0.12);
+}
+
+.production-dialog-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.24);
+  backdrop-filter: blur(14px) saturate(125%);
+}
+
+.production-dialog {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 540px);
+  max-height: calc(100vh - 32px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.86);
+  border-radius: 30px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(245, 250, 252, 0.88));
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.2), inset 0 1px rgba(255, 255, 255, 0.95);
+}
+
+.production-dialog-orb {
+  position: absolute;
+  z-index: -1;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.production-dialog-orb-left {
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.28), rgba(45, 212, 191, 0));
+}
+
+.production-dialog-orb-right {
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.22), rgba(251, 146, 60, 0));
+}
+
+.production-dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 26px 18px;
+}
+
+.production-dialog-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+}
+
+.production-dialog-icon {
+  display: grid;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgba(13, 148, 136, 0.2);
+  border-radius: 16px;
+  color: #0f766e;
+  background: linear-gradient(145deg, rgba(204, 251, 241, 0.94), rgba(224, 242, 254, 0.88));
+  box-shadow: 0 8px 18px rgba(13, 148, 136, 0.12), inset 0 1px rgba(255, 255, 255, 0.9);
+}
+
+.production-dialog-eyebrow {
+  margin: 0 0 4px;
+  color: #0f766e;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.production-dialog h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(1.2rem, 3vw, 1.48rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.production-dialog-close {
+  display: grid;
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 12px;
+  color: #64748b;
+  background: rgba(255, 255, 255, 0.66);
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.production-dialog-close:hover {
+  color: #0f172a;
+  border-color: rgba(15, 23, 42, 0.16);
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.production-dialog-body {
+  display: grid;
+  gap: 14px;
+  padding: 0 26px 24px;
+}
+
+.production-dialog-access-card {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid rgba(13, 148, 136, 0.16);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.64);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05), inset 0 1px rgba(255, 255, 255, 0.9);
+}
+
+.production-dialog-access-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: #0f766e;
+}
+
+.production-dialog-access-heading strong {
+  display: block;
+}
+
+.production-dialog-access-heading strong {
+  color: #134e4a;
+  font-size: 0.9rem;
+}
+
+.production-dialog-credential-list {
+  display: grid;
+  gap: 8px;
+}
+
+.production-dialog-credential-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 9px 10px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 14px;
+  background: rgba(248, 250, 252, 0.74);
+}
+
+.production-dialog-credential-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  color: #64748b;
+  font-size: 0.79rem;
+  font-weight: 700;
+}
+
+.production-dialog-credential-row code {
+  display: block;
+  max-width: 100%;
+  padding: 5px 8px;
+  border-radius: 8px;
+  color: #0f172a;
+  background: rgba(226, 232, 240, 0.74);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.production-dialog-password span {
+  display: inline-block;
+  color: transparent;
+  background: linear-gradient(105deg, #4285f4 0%, #34a853 28%, #fbbc05 58%, #ea4335 82%, #4285f4 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: publicGuestPasswordGradient 4.8s linear infinite;
+}
+
+@keyframes publicGuestPasswordGradient {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 300% 50%;
+  }
+}
+
+.production-dialog-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 30px;
+  padding: 0 9px;
+  border: 1px solid rgba(14, 165, 233, 0.16);
+  border-radius: 10px;
+  color: #0369a1;
+  background: rgba(239, 246, 255, 0.78);
+  font-size: 0.72rem;
+  font-weight: 800;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.production-dialog-copy:hover {
+  color: #0f766e;
+  border-color: rgba(13, 148, 136, 0.32);
+  background: rgba(204, 251, 241, 0.82);
+}
+
+.production-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 26px 22px;
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
+  background: rgba(248, 250, 252, 0.46);
+}
+
+.production-dialog-cancel,
+.production-dialog-confirm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 42px;
+  padding: 0 17px;
+  border-radius: 13px;
+  font-size: 0.86rem;
+  font-weight: 800;
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.production-dialog-cancel {
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  color: #475569;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.production-dialog-cancel:hover {
+  border-color: rgba(100, 116, 139, 0.4);
+  background: rgba(255, 255, 255, 0.98);
+  transform: translateY(-1px);
+}
+
+.production-dialog-confirm {
+  border: 1px solid rgba(15, 118, 110, 0.24);
+  color: #f8fafc;
+  background: linear-gradient(135deg, #0f766e, #0369a1);
+  box-shadow: 0 8px 18px rgba(3, 105, 161, 0.2);
+}
+
+.production-dialog-confirm:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 11px 22px rgba(3, 105, 161, 0.28);
+}
+
+@media (max-width: 560px) {
+  .production-dialog-layer {
+    padding: 12px;
+  }
+
+  .production-dialog {
+    max-height: calc(100vh - 24px);
+    border-radius: 24px;
+  }
+
+  .production-dialog-header {
+    padding: 20px 18px 15px;
+  }
+
+  .production-dialog-body {
+    padding: 0 18px 19px;
+  }
+
+  .production-dialog-footer {
+    padding: 14px 18px 18px;
+  }
+
+  .production-dialog-credential-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .production-dialog-credential-label {
+    grid-column: 1;
+  }
+
+  .production-dialog-credential-row code {
+    grid-column: 1;
+  }
+
+  .production-dialog-copy {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .production-dialog-copy span {
+    display: none;
+  }
+}
+
 /* Floating Bottom Dock */
 .shell-floating-dock {
   position: absolute;
@@ -591,6 +942,10 @@
 
   .guest-notice-bubble {
     transition: none;
+  }
+
+  .production-dialog-password span {
+    animation: none;
   }
 }
 
